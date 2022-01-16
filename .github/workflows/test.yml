@@ -2,6 +2,10 @@ name: Test
 on:
   push
 
+# 実行する dir を指定
+default:
+  dir: ./batch-action
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
