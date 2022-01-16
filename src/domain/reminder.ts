@@ -1,4 +1,3 @@
-import { DiscordWebhookUrl } from './discordWebhookUrl';
 import { DiscordMember } from './member';
 
 export class Event {
