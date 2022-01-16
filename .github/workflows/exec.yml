@@ -1,14 +1,29 @@
 name: Exec
 on:
-  push
+  schedule:
+    # UTC
+    - cron: "* 3 * * 0" # JPN 12:00 Sun
+  workflow_dispatch:
+
+# 環境変数の設定
+# repository secrets から取得した環境変数を設定する
+env:
+  # Discord Webhook URL
+  DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      ref: 'release'
     - uses: actions/setup-node@v1
       with:
         node-version: '16.x'
-    - name: npm install, run
+        cache: 'npm'
+    - name: install
+      run: npm install
+    - name: build
+      run: npm run all
+    - name: execute
       run: node dist/index.js

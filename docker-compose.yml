@@ -10,6 +10,7 @@ services:
     environment:
       GID: 1000
       UID: 1000
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
     user: "1000:1000"
     tty: true
 volumes:
