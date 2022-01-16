@@ -2,3 +2,10 @@ node_modules
 coverage
 lib
 dist
+.envrc
+
+# terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
