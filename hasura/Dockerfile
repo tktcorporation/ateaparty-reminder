@@ -1,14 +1,13 @@
-FROM ubuntu:20.04
+FROM debian:buster-20211220-slim
 
-RUN apt-get update -y && apt-get install -y curl
+RUN apt-get update -y && apt-get install -y curl socat
+RUN curl -L -o /usr/local/bin/hasura https://github.com/hasura/graphql-engine/releases/download/v2.0.0-beta.2/cli-hasura-linux-amd64
+RUN chmod +x /usr/local/bin/hasura
 
-# Create Hasura CLI user
-# RUN adduser --system --home /hasuracli --disabled-password --group hasuracli
-# WORKDIR /hasuracli
-# USER hasuracli
+WORKDIR /usr/src/hasura
 
-# Install HasuraCLI
-RUN curl -L https://github.com/hasura/graphql-engine/raw/master/cli/get.sh | INSTALL_PATH=/hasuracli bash
+COPY . .
 
-# Run Hasura on start
-ENTRYPOINT ["/hasuracli/hasura"]
+RUN chmod +x ./start.sh
+
+CMD "./start.sh"

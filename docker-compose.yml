@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   app:
     command: /bin/bash -c "yarn && yarn dev"
@@ -23,14 +23,17 @@ services:
     volumes:
       - ./terraform:/workspace:cached
   hasura:
-    command: console
     build: ./hasura
-    working_dir: /hasura
     ports:
+      - "9693:9693"
       - "9695:9695"
-      - "3000:3000"
+    environment:
+      HASURA_RUN_CONSOLE: true
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      HASURA_GRAPHQL_ENDPOINT: http://127.0.0.1:8080
     volumes:
-      - ./hasura:/hasura
+      - ./migrations:/usr/src/hasura/migrations
+      - ./metadata:/usr/src/hasura/metadata
     depends_on:
       - postgres
       - graphql-engine
