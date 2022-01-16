@@ -22,5 +22,10 @@ services:
       TF_VAR_heroku_app_name: ${TF_VAR_heroku_app_name}
     volumes:
       - ./terraform:/workspace:cached
+  hasura:
+    build: ./hasura
+    working_dir: /hasura
+    volumes:
+      - .:/hasura
 volumes:
   node_modules:
