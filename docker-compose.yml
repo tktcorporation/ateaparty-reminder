@@ -22,36 +22,39 @@ services:
       TF_VAR_heroku_app_name: ${TF_VAR_heroku_app_name}
     volumes:
       - ./terraform:/workspace:cached
-  hasura:
-    build: ./hasura
-    ports:
-      - "9693:9693"
-      - "9695:9695"
-    environment:
-      HASURA_RUN_CONSOLE: true
-      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
-      HASURA_GRAPHQL_ENDPOINT: http://127.0.0.1:8080
-    volumes:
-      - ./migrations:/usr/src/hasura/migrations
-      - ./metadata:/usr/src/hasura/metadata
-    depends_on:
-      - postgres
-      - graphql-engine
+  # hasura:
+  #   build: ./hasura
+  #   ports:
+  #     - "9693:9693"
+  #     - "9695:9695"
+  #   environment:
+  #     HASURA_RUN_CONSOLE: true
+  #     HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+  #     HASURA_GRAPHQL_ENDPOINT: http://graphql-engine:8080
+  #   volumes:
+  #     - ./hasura:/usr/src/hasura
+  #   depends_on:
+  #     - graphql-engine
   postgres:
     image: postgres:12
     restart: always
     volumes:
-    - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: postgrespassword
-  graphql-engine:
-    image: hasura/graphql-engine:v2.1.1
+  hasura-engine:
+    build: ./hasura
     ports:
-    - "8080:8080"
+      - "9693:9693"
+      - "9695:9695"
+      - "8080:8080"
+    volumes:
+      - ./hasura:/usr/src/hasura
     depends_on:
-    - "postgres"
+      - "postgres"
     restart: always
     environment:
+      HASURA_RUN_CONSOLE: true
       ## postgres database to store Hasura metadata
       HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
       ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
