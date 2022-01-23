@@ -1,11 +1,20 @@
-# .github
+# ateaparty-reminder
 
-## Github Repository Template
+## Set up
 
-Generate your repository by this.
+* prerequirements
+    * [brew](https://brew.sh): for installing `hasura-cli`
+    * [docker](https://docs.docker.com/docker-for-mac/install/)
+    * [docker-compose](https://docs.docker.com/compose/install/)
 
-## Actions
+### install hasura-cli
 
-- https://github.com/github/codeql-action
-- https://github.com/tkt-actions/add-issue-links
-- https://github.com/actions/labeler
+```bash
+brew install hasura-cli
+```
+
+## Start a local server
+
+```bash
+docker-compose up
+```
