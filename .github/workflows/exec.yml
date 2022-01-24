@@ -11,15 +11,19 @@ env:
   # Discord Webhook URL
   DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
 
-# 実行する dir を指定
-default:
-  dir: ./batch-action
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    # 実行する dir を指定
+    defaults:
+      run:
+        shell: bash
+        working-directory: batch-action
     steps:
+    # checkout release branch
     - uses: actions/checkout@v2
+      with:
+        branch: release
     - uses: actions/setup-node@v1
       with:
         node-version: '16.x'
