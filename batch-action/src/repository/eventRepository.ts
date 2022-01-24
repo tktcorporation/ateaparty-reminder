@@ -12,6 +12,7 @@ const kaiz = new Staff(new DiscordMember('932624262508970025'))
 export class EventRepository {
   getAll = async (): Promise<Event[]> => {
     return [
+      new Event(anoko, new Date(2022, 1, 23, 0, 0)),
       new Event(konadd, new Date(2022, 1, 30, 0, 0)),
       new Event(konadd, new Date(2022, 2, 6, 0, 0)),
       new Event(konadd, new Date(2022, 2, 13, 0, 0)),
