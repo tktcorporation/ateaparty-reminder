@@ -5,23 +5,17 @@ export class Staff {
 }
 
 export class Event {
-  constructor(
-    public readonly host: Staff,
-    public readonly date: Date,
-  ) {}
+  constructor(public readonly host: Staff, public readonly date: Date) {}
 }
 
 export class NotStartedEvent extends Event {
-  constructor(
-    host: Staff, date: Date,
-  ) {
+  constructor(host: Staff, date: Date) {
     super(host, date);
   }
 }
 
 export class SortedNotStartedEvents {
-  constructor(private readonly values: NotStartedEvent[]) {
-  }
+  constructor(private readonly values: NotStartedEvent[]) {}
   public getNextEvent(): NotStartedEvent | undefined {
     if (this.values.length < 1) {
       return;
