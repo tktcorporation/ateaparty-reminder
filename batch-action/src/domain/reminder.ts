@@ -1,39 +1,37 @@
 import { DiscordMember } from './member';
 
+export class Staff {
+  constructor(public readonly member: DiscordMember) {}
+}
+
 export class Event {
   constructor(
-    public readonly member: DiscordMember,
+    public readonly host: Staff,
     public readonly date: Date,
   ) {}
 }
 
-export class Reminder {
-  constructor(public readonly events: Event[]) {}
-
-  /**
-   * get sorted events by date
-   */
-  get sortedEvents(): Event[] {
-    return this.events.sort((a, b) => a.date.getTime() - b.date.getTime());
+export class NotStartedEvent extends Event {
+  constructor(
+    host: Staff, date: Date,
+  ) {
+    super(host, date);
   }
+}
 
-  /**
-   * 次回のイベントを取得する
-   */
-  get nextEvent(): Event | undefined {
-    if (this.events.length < 1) {
-      return undefined;
-    }
-    return this.sortedEvents[0];
+export class SortedNotStartedEvents {
+  constructor(private readonly values: NotStartedEvent[]) {
   }
-
-  /**
-   * 次次回のイベントを取得する
-   */
-  get nextNextEvent(): Event | undefined {
-    if (this.events.length < 2) {
-      return undefined;
+  public getNextEvent(): NotStartedEvent | undefined {
+    if (this.values.length < 1) {
+      return;
     }
-    return this.sortedEvents[1];
+    return this.values[0];
+  }
+  public getNextNextEvent(): NotStartedEvent | undefined {
+    if (this.values.length < 2) {
+      return;
+    }
+    return this.values[1];
   }
 }

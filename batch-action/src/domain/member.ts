@@ -5,8 +5,8 @@ export class DiscordMember {
    * Get mebntion string
    * @returns mention string
    * @example
-   * const member = new DiscordMember('tkt#6539');
-   * member.mention(); // <@!6539>
+   * const member = new DiscordMember('502486808211357707');
+   * member.mention(); // <@!502486808211357707>
    */
   public mention(): string {
     return `<@!${this.user_id}>`;

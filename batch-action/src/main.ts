@@ -1,18 +1,18 @@
 import { sendDiscordMessage } from './infrastructure/discord';
-import { Reminder } from './domain/reminder';
+import { SortedNotStartedEvents } from './domain/reminder';
 import { EventRepository } from './repository/eventRepository';
 import { DiscordWebhookUrl } from './domain/discordWebhookUrl';
 
 /**
  * 当番通知用のメッセージを生成する
  */
-const createRemindMessage = (reminder: Reminder): string => {
-  const firstEvent = reminder.nextEvent;
-  const secondEvent = reminder.nextNextEvent;
+const createRemindMessage = (sortedNotStartedEvents: SortedNotStartedEvents): string => {
+  const firstEvent = sortedNotStartedEvents.getNextEvent();
+  const secondEvent = sortedNotStartedEvents.getNextNextEvent();
   return `
     **お茶会の司会当番のお知らせです**
-    今週: ${firstEvent?.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'}
-    次週: ${secondEvent?.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'}
+    今週: ${firstEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'}
+    次週: ${secondEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'}
     よろしくおねがいします！
     `;
 };
@@ -23,7 +23,7 @@ const main = async () => {
     throw new Error('DISCORD_WEBHOOK_URL environment variable is not set');
   }
   sendDiscordMessage(
-    createRemindMessage(new Reminder(await new EventRepository().getAll())),
+    createRemindMessage(await new EventRepository().getAllSortedNotStartedEvents()),
     new DiscordWebhookUrl(discordWebhookUrl),
   );
 };
