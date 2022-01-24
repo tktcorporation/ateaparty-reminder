@@ -5,12 +5,16 @@ export class Staff {
 }
 
 export class Event {
-  constructor(public readonly host: Staff, public readonly date: Date) {}
+  constructor(
+    public readonly host: Staff,
+    public readonly sub: Staff[],
+    public readonly date: Date,
+  ) {}
 }
 
 export class NotStartedEvent extends Event {
-  constructor(host: Staff, date: Date) {
-    super(host, date);
+  constructor(host: Staff, sub: Staff[], date: Date) {
+    super(host, sub, date);
   }
 }
 

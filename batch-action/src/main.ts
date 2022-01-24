@@ -13,12 +13,25 @@ const createRemindMessage = (
   const secondEvent = sortedNotStartedEvents.getNextNextEvent();
   return `
     **お茶会の司会当番のお知らせです**
-    今週: ${
+    今週: 
+    メイン: ${
       firstEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'
     }
-    次週: ${
+    サブ: ${
+      firstEvent?.sub.map((staff) => staff.member.mention()).join(', ') ??
+      'まだ決まってないよ！やゔぁいよ！'
+    }
+
+    次週:
+    メイン: ${
       secondEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'
     }
+    サブ: ${
+      secondEvent?.sub.map((staff) => staff.member.mention()).join(', ') ??
+      'まだ決まってないよ！やゔぁいよ！'
+    }
+
+    担当日の都合が悪いときはサブの人に相談してね！
     よろしくおねがいします！
     `;
 };

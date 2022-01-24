@@ -7,15 +7,15 @@ const tkt = new Staff(new DiscordMember('502486808211357707'));
 const shabeko = new Staff(new DiscordMember('798137406946934784'));
 const anoko = new Staff(new DiscordMember('599187907705700363'));
 const konadd = new Staff(new DiscordMember('526574190858338314'));
-const kaiz = new Staff(new DiscordMember('932624262508970025'));
+const kaiz = new Staff(new DiscordMember('600276691708805133'));
 
 export class EventRepository {
   getAll = async (): Promise<Event[]> => {
     return [
-      new Event(anoko, new Date(2022, 0, 23, 0, 0)),
-      new Event(konadd, new Date(2022, 0, 30, 0, 0)),
-      new Event(konadd, new Date(2022, 1, 6, 0, 0)),
-      new Event(konadd, new Date(2022, 1, 13, 0, 0)),
+      new Event(anoko, [], new Date(2022, 0, 23, 0, 0)),
+      new Event(konadd, [anoko, kaiz], new Date(2022, 0, 30, 0, 0)),
+      new Event(konadd, [anoko, kaiz], new Date(2022, 1, 6, 0, 0)),
+      new Event(konadd, [anoko, kaiz], new Date(2022, 1, 13, 0, 0)),
     ];
   };
   getAllNotStartedEvents = async (): Promise<NotStartedEvent[]> => {

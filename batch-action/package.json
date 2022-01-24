@@ -25,7 +25,8 @@
         "test:cov": "jest --coverage",
         "pack": "ncc build -m",
         "all": "npm run format && npm run lint && npm test && npm run build && npm run pack",
-        "pre-commit": "all"
+        "pre-commit": "all",
+        "exec": "npm run all && node dist/index.js"
     },
     "repository": {
         "type": "git",
