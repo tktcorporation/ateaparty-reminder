@@ -1,1 +1,4 @@
+- "!include public_event.yaml"
+- "!include public_event_sub_staff.yaml"
+- "!include public_staff.yaml"
 - "!include public_user.yaml"

@@ -1,6 +1,20 @@
-actions: []
+actions:
+- name: MyQuery
+  definition:
+    kind: ""
+    handler: http://localhost:3000
 custom_types:
   enums: []
   input_objects: []
-  objects: []
+  objects:
+  - name: MyQueryOutput
+    relationships:
+    - remote_table:
+        schema: public
+        name: staff
+      name: host_staff
+      source: local
+      type: object
+      field_mapping:
+        host: id
   scalars: []
