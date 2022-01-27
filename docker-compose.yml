@@ -11,6 +11,7 @@ services:
       GID: 1000
       UID: 1000
       DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
+      GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
     user: "1000:1000"
     tty: true
   tf:
