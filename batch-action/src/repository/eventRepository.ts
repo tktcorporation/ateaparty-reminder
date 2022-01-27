@@ -45,26 +45,24 @@ export class EventDataMap implements EventRepository {
   getAll = async (): Promise<Event[]> => {
     const events = await this.dataSource.queryAllEvents();
     return events.map((event) => {
-      const staff = new Staff(
-        new DiscordMember(event.staff.user.discord_id),
-      );
+      const staff = new Staff(new DiscordMember(event.staff.user.discord_id));
       const sub: Staff[] = event.event_sub_staffs.map(
         (eventSubStaff) =>
           new Staff(new DiscordMember(eventSubStaff.staff.user.discord_id)),
       );
       return new Event(staff, sub, new Date(event.datetime));
     });
-  }
+  };
   getAllNotStartedEvents = async (): Promise<NotStartedEvent[]> => {
     const events = await this.getAll();
     return events.filter(
       (event) => event.date.getTime() > new Date().getTime(),
     );
-  }
+  };
   getAllSortedNotStartedEvents = async (): Promise<SortedNotStartedEvents> => {
     const events: NotStartedEvent[] = await this.getAllNotStartedEvents();
     return new SortedNotStartedEvents(
       events.sort((a, b) => a.date.getTime() - b.date.getTime()),
     );
-  }
+  };
 }

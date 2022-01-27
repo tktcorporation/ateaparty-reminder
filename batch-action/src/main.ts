@@ -1,7 +1,9 @@
 import { sendDiscordMessage } from './infrastructure/discord';
 import { SortedNotStartedEvents } from './domain/reminder';
-import { EventRepository } from './repository/eventRepository';
+import { EventDataMap } from './repository/eventRepository';
 import { DiscordWebhookUrl } from './domain/discordWebhookUrl';
+import { GraphQLClient } from 'graphql-request';
+import { EventDataSource } from './infrastructure/eventDataSource';
 
 /**
  * 当番通知用のメッセージを生成する
@@ -41,10 +43,15 @@ const main = async () => {
   if (!discordWebhookUrl) {
     throw new Error('DISCORD_WEBHOOK_URL environment variable is not set');
   }
+  const graphqlEndpoint = process.env.GRAPHQL_ENDPOINT;
+  if (!graphqlEndpoint) {
+    throw new Error('GRAPHQL_ENDPOINT environment variable is not set');
+  }
+  const eventRepository = new EventDataMap(
+    new EventDataSource(new GraphQLClient(graphqlEndpoint)),
+  );
   sendDiscordMessage(
-    createRemindMessage(
-      await new EventRepository().getAllSortedNotStartedEvents(),
-    ),
+    createRemindMessage(await eventRepository.getAllSortedNotStartedEvents()),
     new DiscordWebhookUrl(discordWebhookUrl),
   );
 };
