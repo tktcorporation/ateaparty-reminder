@@ -1,8 +1,8 @@
 name: Exec
 on:
   schedule:
-    # UTC
-    - cron: "* 3 * * 0" # JPN 12:00 Sun
+    # UTC 3:00 Mon
+    - cron: "* 3 * * 1" 
   workflow_dispatch:
 
 # 環境変数の設定
