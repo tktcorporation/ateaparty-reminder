@@ -14,6 +14,22 @@ services:
       GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
     user: "1000:1000"
     tty: true
+  web:
+    command: /bin/bash -c "sudo yarn && yarn dev"
+    build: ./manage
+    working_dir: /app
+    volumes:
+      - ./manage:/app
+      - web_nodemodules:/app/node_modules
+    environment:
+      GID: 1000
+      UID: 1000
+      GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
+    user: "1000:1000"
+    tty: true
+    ports:
+      - 3000:3000
+      - 6006:6006
   tf:
     image: hashicorp/terraform:1.1.3
     working_dir: /workspace
@@ -51,4 +67,5 @@ services:
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
 volumes:
   node_modules:
+  web_nodemodules:
   db_data:
