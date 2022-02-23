@@ -1,6 +1,7 @@
 export HEROKU_API_KEY=<TOKEN>
 export HEROKU_EMAIL=<EMAIL>
 export DISCORD_WEBHOOK_URL=<URL>
-export HASURA_GRAPHQL_METADATA_DATABASE_URL=<URL>
-export PG_DATABASE_URL=<URL>
-export GRAPHQL_ENDPOINT=<URL>
+export GRAPHQL_ENDPOINT=http://graphql-engine:8080/v1/graphql
+export POSTGRES_USER=postgres
+export POSTGRES_PASSWORD=postgres
+export POSTGRES_DB=default

@@ -3,6 +3,9 @@ on: push
 
 env:
   GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: default
 
 jobs:
   build-and-test:
