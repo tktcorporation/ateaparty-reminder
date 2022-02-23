@@ -19,6 +19,10 @@ export class EventRepository {
       new Event(konadd, [anoko, kaiz, couky], new Date(2022, 1, 13, 0, 0)),
       new Event(konadd, [anoko, kaiz, couky], new Date(2022, 1, 20, 0, 0)),
       new Event(konadd, [anoko, kaiz, couky], new Date(2022, 1, 27, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 6, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 13, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 20, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 27, 0, 0)),
     ];
   };
   getAllNotStartedEvents = async (): Promise<NotStartedEvent[]> => {
