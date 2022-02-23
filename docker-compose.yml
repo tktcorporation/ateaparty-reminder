@@ -15,7 +15,8 @@ services:
     user: "1000:1000"
     tty: true
     depends_on:
-      - "graphql-engine"
+      graphql-engine:
+        condition: service_healthy
   web:
     command: /bin/bash -c "sudo yarn && yarn dev"
     build: ./manage
@@ -33,7 +34,8 @@ services:
       - 3000:3000
       - 6006:6006
     depends_on:
-      - "graphql-engine"
+      graphql-engine:
+        condition: service_healthy
   tf:
     image: hashicorp/terraform:1.1.3
     working_dir: /workspace
@@ -78,6 +80,8 @@ services:
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:8080/v1/health"]
 volumes:
   node_modules:
   web_nodemodules:
