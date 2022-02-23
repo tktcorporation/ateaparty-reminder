@@ -15,8 +15,7 @@ services:
     user: "1000:1000"
     tty: true
     depends_on:
-      graphql-engine:
-        condition: service_healthy
+      - graphql-engine
   web:
     command: /bin/bash -c "sudo yarn && yarn dev"
     build: ./manage
@@ -80,7 +79,7 @@ services:
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
     healthcheck:
-      test: curl -Ssf http://localhost:8080/healthz || exit 1
+      test: curl -Ssf http://localhost:8080/heal
       interval: 20s
       timeout: 80s
       retries: 10
