@@ -24,3 +24,4 @@ jobs:
         run: |
           docker-compose up -d app
           docker-compose exec app /bin/bash -c "sudo npm i && npm run all"
+          docker inspect --format "{{json .State.Health }}" ateaparty-reminder_graphql-engine_1 | jq

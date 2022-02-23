@@ -81,7 +81,7 @@ services:
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
     healthcheck:
-      test: curl -f http://localhost:8080/healthz || exit 1
+      test: curl -Ssf http://localhost:8080/healthz || exit 1
       interval: 20s
       timeout: 80s
       retries: 10
