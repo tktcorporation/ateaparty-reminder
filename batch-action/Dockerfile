@@ -3,10 +3,10 @@ FROM node:16.13.0-buster-slim AS build-env
 ENV LC_ALL=C.UTF-8
 
 RUN apt-get update && \
-    apt-get install -y \
-    curl \
-    git \
-    sudo
+  apt-get install -y \
+  curl \
+  git \
+  sudo
 
 
 ENV UNAME=docker
@@ -18,7 +18,7 @@ RUN useradd -m -u $UID -g $GID -G sudo -o -s /bin/bash $UNAME
 RUN echo "$UNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-# RUN npm i -g typescript
+RUN npm install -g npm@8.5.1
 
 
 # WORKDIR /app
