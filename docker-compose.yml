@@ -82,10 +82,10 @@ services:
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
     healthcheck:
       test: apt-get install -qq -y curl && curl -f http://localhost:8080/healthz || exit 1
-      interval: 5s
-      timeout: 60s
+      interval: 20s
+      timeout: 80s
       retries: 10
-      start_period: 60s
+      start_period: 120s
 volumes:
   node_modules:
   web_nodemodules:
