@@ -57,7 +57,7 @@ services:
     ports:
       - 5432:5432
   graphql-engine:
-    image: hasura/graphql-engine:v2.2.0.cli-migrations-v3
+    build: ./hasura
     volumes:
       - ./hasura/migrations:/hasura-migrations
       - ./hasura/metadata:/hasura-metadata
@@ -81,7 +81,7 @@ services:
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
     healthcheck:
-      test: apt-get install -qq -y curl && curl -f http://localhost:8080/healthz || exit 1
+      test: curl -f http://localhost:8080/healthz || exit 1
       interval: 20s
       timeout: 80s
       retries: 10
