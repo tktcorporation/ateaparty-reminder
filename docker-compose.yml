@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   app:
-    command: /bin/bash -c "yarn && yarn dev"
+    command: /bin/sh -c "sudo npm i && while sleep 1000; do :; done"
     build: ./batch-action
     working_dir: /app
     volumes:
