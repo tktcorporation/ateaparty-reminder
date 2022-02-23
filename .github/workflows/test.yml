@@ -1,6 +1,8 @@
 name: Test
-on:
-  push
+on: push
+
+env:
+  GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
 
 jobs:
   build-and-test:
@@ -11,11 +13,10 @@ jobs:
         shell: bash
         working-directory: batch-action
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-    - name: npm install, build, lint and test
-      run: |
-        npm install
-        npm run all
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - name: npm install, build, lint and test
+        run: |
+          docker-compose run app /bin/bash -c "sudo npm i && npm run all"
