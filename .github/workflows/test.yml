@@ -22,4 +22,5 @@ jobs:
           node-version: "16.x"
       - name: npm install, build, lint and test
         run: |
-          docker-compose run --rm --service-ports app /bin/bash -c "sudo npm i && npm run all"
+          docker-compose up -d app
+          docker-compose exec app /bin/bash -c "sudo npm i && npm run all"
