@@ -8,11 +8,11 @@ services:
       - ./batch-action:/app
       - node_modules:/app/node_modules
     environment:
-      GID: 1000
-      UID: 1000
+      GID: ${GID:-1000}
+      UID: ${UID:-1000}
       DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL}
       GRAPHQL_ENDPOINT: ${GRAPHQL_ENDPOINT}
-    user: "1000:1000"
+    user: "${GID:-1000}:${UID:-1000}"
     tty: true
     depends_on:
       - graphql-engine

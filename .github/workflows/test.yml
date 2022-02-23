@@ -22,4 +22,4 @@ jobs:
           node-version: "16.x"
       - name: npm install, build, lint and test
         run: |
-          docker-compose run app /bin/bash -c "npm run all"
+          docker-compose run --rm -u 0:0 app /bin/bash -c "npm run all"
