@@ -1,0 +1,1 @@
+INSERT INTO "public"."staff"("id", "user_id", "created_at", "updated_at") VALUES (1, E'a3dad1b2-de2d-4e2e-89dc-b262cf3a568c', E'2022-01-24T17:35:00.985097+00:00', E'2022-01-24T17:35:00.985097+00:00');
