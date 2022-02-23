@@ -22,6 +22,4 @@ jobs:
           node-version: "16.x"
       - name: npm install, build, lint and test
         run: |
-          docker-compose up -d graphql-engine
-          docker-compose ps
-          docker-compose run app /bin/bash -c "sudo npm i && sudo npm run all"
+          docker-compose run --rm --service-ports app /bin/bash -c "sudo npm i && npm run all"

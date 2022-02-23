@@ -81,7 +81,11 @@ services:
       ## uncomment next line to set an admin secret
       # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
     healthcheck:
-      test: ["CMD", "curl", "http://localhost:8080/v1/health"]
+      test: apt-get install -qq -y curl && curl -f http://localhost:8080/healthz || exit 1
+      interval: 5s
+      timeout: 60s
+      retries: 10
+      start_period: 60s
 volumes:
   node_modules:
   web_nodemodules:
