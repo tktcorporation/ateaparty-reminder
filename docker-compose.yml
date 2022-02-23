@@ -14,6 +14,8 @@ services:
       GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
     user: "1000:1000"
     tty: true
+    depends_on:
+      - "graphql-engine"
   web:
     command: /bin/bash -c "sudo yarn && yarn dev"
     build: ./manage
@@ -30,6 +32,8 @@ services:
     ports:
       - 3000:3000
       - 6006:6006
+    depends_on:
+      - "graphql-engine"
   tf:
     image: hashicorp/terraform:1.1.3
     working_dir: /workspace
