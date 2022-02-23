@@ -24,4 +24,4 @@ jobs:
         run: |
           docker-compose up -d graphql-engine
           docker-compose ps
-          docker-compose run app /bin/bash -c "sudo npm i && npm run all"
+          docker-compose run app /bin/bash -c "sudo npm i && sudo npm run all"
