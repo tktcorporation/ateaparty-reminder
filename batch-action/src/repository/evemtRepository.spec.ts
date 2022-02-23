@@ -1,8 +1,10 @@
 import { EventRepository, EventDataMapDummy } from './eventRepository';
+import MockDate from 'mockdate';
 
 describe('eventRepository', () => {
   let eventRepository: EventRepository;
   beforeAll(() => {
+    MockDate.set('2022-01-23T00:00:00.000Z');
     eventRepository = new EventDataMapDummy();
   });
   it('should get all events', async () => {
