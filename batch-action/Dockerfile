@@ -5,6 +5,7 @@ ENV LC_ALL=C.UTF-8
 RUN apt-get update && \
   apt-get install -y \
   curl \
+  jq \
   git \
   sudo
 
@@ -28,6 +29,10 @@ RUN npm install -g npm@8.5.1
 
 # RUN npm i
 
-# COPY  . .
+COPY entrypoint-dev.sh entrypoint-dev.sh
+RUN chmod +x entrypoint-dev.sh
+COPY  . .
+
+ENTRYPOINT [ "./entrypoint-dev.sh" ]
 
 # CMD [ "/bin/bash", "-c", "npm i && npm run build" ]
