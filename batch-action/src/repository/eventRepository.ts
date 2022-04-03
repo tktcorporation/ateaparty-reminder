@@ -8,7 +8,8 @@ const tkt = new Staff(new DiscordMember('502486808211357707', 'tkt'));
 const shabeko = new Staff(new DiscordMember('798137406946934784', 'shabeko'));
 const anoko = new Staff(new DiscordMember('599187907705700363', 'あの子'));
 const konadd = new Staff(new DiscordMember('526574190858338314', 'konadd'));
-const kaiz = new Staff(new DiscordMember('600276691708805133', 'kaiz'));
+const kaiz = new Staff(new DiscordMember('600276691708805133', 'kaiz/NA'));
+const couky = new Staff(new DiscordMember('842444056210178079', 'coukyこうきぃ'));
 
 export interface EventRepository {
   getAll(): Promise<Event[]>;
@@ -22,7 +23,13 @@ export class EventDataMapDummy implements EventRepository {
       new Event(anoko, [], new Date(2022, 0, 23, 0, 0)),
       new Event(konadd, [anoko, kaiz], new Date(2022, 0, 30, 0, 0)),
       new Event(konadd, [anoko, kaiz], new Date(2022, 1, 6, 0, 0)),
-      new Event(konadd, [anoko, kaiz], new Date(2022, 1, 13, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 1, 13, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 1, 20, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 1, 27, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 6, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 13, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 20, 0, 0)),
+      new Event(konadd, [anoko, kaiz, couky], new Date(2022, 2, 27, 0, 0)),
     ];
   };
   getAllNotStartedEvents = async (): Promise<NotStartedEvent[]> => {

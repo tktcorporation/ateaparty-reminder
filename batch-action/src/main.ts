@@ -15,7 +15,7 @@ const createRemindMessage = (
   const secondEvent = sortedNotStartedEvents.getNextNextEvent();
   return `
     **お茶会の司会当番のお知らせです**
-    今週: 
+    次回: 
     メイン: ${
       firstEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'
     }
@@ -24,7 +24,7 @@ const createRemindMessage = (
       'まだ決まってないよ！やゔぁいよ！'
     }
 
-    次週:
+    次次回:
     メイン: ${
       secondEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'
     }

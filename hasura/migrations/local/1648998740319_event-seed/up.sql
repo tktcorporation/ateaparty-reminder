@@ -15,3 +15,8 @@ INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_
 INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (8, 6, 3, '2022-04-03 14:34:27.334463+00', '2022-04-03 14:34:27.334463+00');
 INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (9, 7, 1, '2022-04-03 14:34:32.333539+00', '2022-04-03 14:34:32.333539+00');
 INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (10, 7, 3, '2022-04-03 14:34:35.543312+00', '2022-04-03 14:34:35.543312+00');
+INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (11, 3, 5, '2022-04-03 15:55:37.637971+00', '2022-04-03 15:55:37.637971+00');
+INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (12, 4, 5, '2022-04-03 15:55:44.57858+00', '2022-04-03 15:55:44.57858+00');
+INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (13, 5, 5, '2022-04-03 15:55:47.617871+00', '2022-04-03 15:55:47.617871+00');
+INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (14, 6, 5, '2022-04-03 15:55:50.346148+00', '2022-04-03 15:55:50.346148+00');
+INSERT INTO public.event_sub_staff (id, event_id, staff_id, created_at, updated_at) VALUES (15, 7, 5, '2022-04-03 15:55:53.489816+00', '2022-04-03 15:55:53.489816+00');

@@ -9,11 +9,11 @@ describe('eventRepository', () => {
   });
   it('should get all events', async () => {
     const events = await eventRepository.getAll();
-    expect(events).toHaveLength(4);
+    expect(events).toHaveLength(10);
   });
   it('should get all not started events', async () => {
     const events = await eventRepository.getAllNotStartedEvents();
-    expect(events).toHaveLength(3);
+    expect(events).toHaveLength(9);
   });
   it('should get all sorted not started events', async () => {
     const events = await eventRepository.getAllSortedNotStartedEvents();
