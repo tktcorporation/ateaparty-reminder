@@ -4,12 +4,12 @@ import { Staff } from '../domain/reminder';
 import { SortedNotStartedEvents } from '../domain/reminder';
 import { EventDataSource } from 'src/infrastructure/eventDataSource';
 
-const tkt = new Staff(new DiscordMember('502486808211357707'));
-const shabeko = new Staff(new DiscordMember('798137406946934784'));
-const anoko = new Staff(new DiscordMember('599187907705700363'));
-const konadd = new Staff(new DiscordMember('526574190858338314'));
-const kaiz = new Staff(new DiscordMember('600276691708805133'));
-const couky = new Staff(new DiscordMember('842444056210178079'));
+const tkt = new Staff(new DiscordMember('502486808211357707', 'tkt'));
+const shabeko = new Staff(new DiscordMember('798137406946934784', 'shabeko'));
+const anoko = new Staff(new DiscordMember('599187907705700363', 'あの子'));
+const konadd = new Staff(new DiscordMember('526574190858338314', 'konadd'));
+const kaiz = new Staff(new DiscordMember('600276691708805133', 'kaiz/NA'));
+const couky = new Staff(new DiscordMember('842444056210178079', 'coukyこうきぃ'));
 
 export interface EventRepository {
   getAll(): Promise<Event[]>;
