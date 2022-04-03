@@ -7,6 +7,7 @@ interface EventsResult {
     staff: {
       user: {
         discord_id: string;
+        name: string;
       };
     };
     event_sub_staffs: Array<{
@@ -48,6 +49,7 @@ export class EventDataSource {
           created_at
           staff {
             user {
+              name
               discord_id
             }
           }

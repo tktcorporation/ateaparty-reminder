@@ -1,5 +1,5 @@
 export class DiscordMember {
-  constructor(public readonly user_id: string) {}
+  constructor(public readonly user_id: string, public readonly name: string) {}
 
   /**
    * Get mebntion string

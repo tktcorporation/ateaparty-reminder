@@ -20,7 +20,7 @@ const createRemindMessage = (
       firstEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'
     }
     サブ: ${
-      firstEvent?.sub.map((staff) => staff.member.mention()).join(', ') ??
+      firstEvent?.sub.map((staff) => staff.member.name).join(', ') ??
       'まだ決まってないよ！やゔぁいよ！'
     }
 
@@ -29,7 +29,7 @@ const createRemindMessage = (
       secondEvent?.host.member.mention() ?? 'まだ決まってないよ！やゔぁいよ！'
     }
     サブ: ${
-      secondEvent?.sub.map((staff) => staff.member.mention()).join(', ') ??
+      secondEvent?.sub.map((staff) => staff.member.name).join(', ') ??
       'まだ決まってないよ！やゔぁいよ！'
     }
 
