@@ -1,0 +1,11 @@
+type Query {
+  MyQuery: MyQueryOutput
+}
+
+type MyQueryOutput {
+  created_at: timestamptz!
+  datetime: timestamp!
+  host: bigint!
+  id: bigint!
+}
+

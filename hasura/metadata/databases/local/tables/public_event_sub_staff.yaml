@@ -1,0 +1,10 @@
+table:
+  name: event_sub_staff
+  schema: public
+object_relationships:
+- name: event
+  using:
+    foreign_key_constraint_on: event_id
+- name: staff
+  using:
+    foreign_key_constraint_on: staff_id

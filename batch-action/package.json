@@ -4,18 +4,24 @@
     "description": "ateaparty reminder",
     "main": "lib/main.js",
     "devDependencies": {
-        "@types/jest": "^27.4.0",
-        "@typescript-eslint/eslint-plugin": "^5.8.1",
-        "@vercel/ncc": "^0.33.1",
-        "eslint": "^8.6.0",
-        "eslint-config-prettier": "^8.3.0",
-        "jest": "^27.4.5",
-        "mockdate": "^3.0.5",
-        "prettier": "^2.5.1",
-        "ts-jest": "^27.1.2",
-        "typescript": "^4.5.4"
+        "@graphql-codegen/cli": "2.6.2",
+        "@graphql-codegen/introspection": "2.1.1",
+        "@graphql-codegen/typescript": "2.4.2",
+        "@graphql-codegen/typescript-resolvers": "2.4.3",
+        "@types/jest": "27.4.0",
+        "@typescript-eslint/eslint-plugin": "5.8.1",
+        "@typescript-eslint/parser": "5.10.1",
+        "@vercel/ncc": "0.33.1",
+        "eslint": "8.6.0",
+        "eslint-config-prettier": "8.3.0",
+        "jest": "27.4.5",
+        "mockdate": "3.0.5",
+        "prettier": "2.5.1",
+        "ts-jest": "27.1.2",
+        "typescript": "4.5.4"
     },
     "scripts": {
+        "start": "node -r ts-node/register src/main.ts",
         "build": "tsc",
         "format": "prettier --write \"{src,test}/**/{*.ts,*.tsx,*.js,*.jsx}\"",
         "format:check": "prettier --check \"{src,test}/**/{*.ts,*.tsx,*.js,*.jsx}\"",
@@ -27,7 +33,8 @@
         "pack": "ncc build -m",
         "all": "npm run format && npm run lint && npm test && npm run build && npm run pack",
         "pre-commit": "all",
-        "exec": "npm run all && node dist/index.js"
+        "exec": "npm run all && node dist/index.js",
+        "codegen": "graphql-codegen --config codegen.yml"
     },
     "repository": {
         "type": "git",
@@ -43,6 +50,8 @@
     },
     "homepage": "https://github.com/tktcorporation/ateaparty-reminder#readme",
     "dependencies": {
-        "axios": "^0.24.0"
+        "axios": "0.24.0",
+        "graphql": "16.3.0",
+        "graphql-request": "4.0.0"
     }
 }

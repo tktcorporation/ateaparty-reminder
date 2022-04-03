@@ -1,6 +1,11 @@
 name: Test
-on:
-  push
+on: push
+
+env:
+  GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: default
 
 jobs:
   build-and-test:
@@ -11,11 +16,10 @@ jobs:
         shell: bash
         working-directory: batch-action
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-    - name: npm install, build, lint and test
-      run: |
-        npm install
-        npm run all
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - name: npm install, build, lint and test
+        run: |
+          docker-compose run --rm -u 0:0 app /bin/bash -c "npm run all"

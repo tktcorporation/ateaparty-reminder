@@ -1,8 +1,8 @@
 name: Exec
 on:
   schedule:
-    # UTC 3:00 Mon
-    - cron: "* 3 * * 1" 
+    # UTC
+    - cron: "0 3 * * 1" # JPN 12:00 Mon
   workflow_dispatch:
 
 # 環境変数の設定
@@ -18,7 +18,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: batch-action
     steps:
     # checkout release branch
     - uses: actions/checkout@v2
@@ -30,7 +29,6 @@ jobs:
         cache: 'npm'
     - name: install
       run: npm install
-    - name: build
-      run: npm run all
+      working-directory: batch-action
     - name: execute
-      run: node dist/index.js
+      run: docker-compose run --rm app /bin/bash -c "sudo npm i && npm run start"

@@ -1,0 +1,15 @@
+table:
+  name: event
+  schema: public
+object_relationships:
+- name: staff
+  using:
+    foreign_key_constraint_on: host
+array_relationships:
+- name: event_sub_staffs
+  using:
+    foreign_key_constraint_on:
+      column: event_id
+      table:
+        name: event_sub_staff
+        schema: public
