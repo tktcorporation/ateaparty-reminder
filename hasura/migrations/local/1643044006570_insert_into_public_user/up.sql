@@ -1,1 +1,0 @@
-INSERT INTO "public"."user"("id", "name", "discord_id", "created_at", "updated_at") VALUES (E'a3dad1b2-de2d-4e2e-89dc-b262cf3a568c', E'kaiz', E'600276691708805133', E'2022-01-24T17:06:46.546759+00:00', E'2022-01-24T17:06:46.546759+00:00');
