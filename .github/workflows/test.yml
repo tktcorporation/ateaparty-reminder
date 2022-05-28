@@ -1,12 +1,6 @@
 name: Test
 on: push
 
-env:
-  GRAPHQL_ENDPOINT: http://graphql-engine:8080/v1/graphql
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_DB: default
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -14,12 +8,16 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: batch-action
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: "16.x"
-      - name: npm install, build, lint and test
+      - uses: actions/cache@v2
+        with:
+          path: ./batch-action/node_modules
+          key: ${{runner.os}}-nodemodules-${{ hashFiles('**/package_lock.json') }}
+      - name: npm install, lint, test and build
         run: |
-          docker-compose run --rm -u 0:0 app /bin/bash -c "npm run all"
+          chmod a+w -R ./batch-action
+          docker-compose run --rm app /bin/bash -c "dum check-build"
