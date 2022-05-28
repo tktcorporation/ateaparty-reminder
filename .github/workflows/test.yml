@@ -16,4 +16,5 @@ jobs:
           node-version: "16.x"
       - name: npm install, lint, test and build
         run: |
-          docker-compose run --rm app /bin/bash -c "dum check-build"
+          ls -la
+          docker-compose run --rm -u root app /bin/bash -c "dum check-build"
