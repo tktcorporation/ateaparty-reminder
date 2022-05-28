@@ -14,7 +14,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "16.x"
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{runner.os}}-nodemodules-${{ hashFiles('**/package_lock.json') }}
       - name: npm install, lint, test and build
         run: |
           ls -la
+          ls -la ./lib
+          chmod 777 -R ./lib
+          ls -la ./lib
           docker-compose run --rm -u root app /bin/bash -c "dum check-build"
