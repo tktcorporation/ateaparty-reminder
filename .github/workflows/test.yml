@@ -19,8 +19,5 @@ jobs:
           key: ${{runner.os}}-nodemodules-${{ hashFiles('**/package_lock.json') }}
       - name: npm install, lint, test and build
         run: |
-          ls -la
-          ls -la ./batch-action/
           chmod a+w -R ./batch-action
-          ls -la ./batch-action/
-          docker-compose run --rm app /bin/bash -c "whoami && ls -la && dum check-build"
+          docker-compose run --rm app /bin/bash -c "dum check-build"
