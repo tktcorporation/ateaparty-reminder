@@ -9,7 +9,9 @@ const shabeko = new Staff(new DiscordMember('798137406946934784', 'shabeko'));
 const anoko = new Staff(new DiscordMember('599187907705700363', 'あの子'));
 const konadd = new Staff(new DiscordMember('526574190858338314', 'konadd'));
 const kaiz = new Staff(new DiscordMember('600276691708805133', 'kaiz/NA'));
-const couky = new Staff(new DiscordMember('842444056210178079', 'coukyこうきぃ'));
+const couky = new Staff(
+  new DiscordMember('842444056210178079', 'coukyこうきぃ'),
+);
 
 export interface EventRepository {
   getAll(): Promise<Event[]>;
@@ -52,10 +54,17 @@ export class EventDataMap implements EventRepository {
   getAll = async (): Promise<Event[]> => {
     const events = await this.dataSource.queryAllEvents();
     return events.map((event) => {
-      const staff = new Staff(new DiscordMember(event.staff.user.discord_id, event.staff.user.name));
+      const staff = new Staff(
+        new DiscordMember(event.staff.user.discord_id, event.staff.user.name),
+      );
       const sub: Staff[] = event.event_sub_staffs.map(
         (eventSubStaff) =>
-          new Staff(new DiscordMember(eventSubStaff.staff.user.discord_id, eventSubStaff.staff.user.name)),
+          new Staff(
+            new DiscordMember(
+              eventSubStaff.staff.user.discord_id,
+              eventSubStaff.staff.user.name,
+            ),
+          ),
       );
       return new Event(staff, sub, new Date(event.datetime));
     });
