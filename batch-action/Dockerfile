@@ -33,6 +33,6 @@ COPY entrypoint-dev.sh entrypoint-dev.sh
 RUN chmod +x entrypoint-dev.sh
 COPY  . .
 
-ENTRYPOINT [ "./entrypoint-dev.sh" ]
+ENTRYPOINT [ "/entrypoint-dev.sh" ]
 
 # CMD [ "/bin/bash", "-c", "npm i && npm run build" ]
