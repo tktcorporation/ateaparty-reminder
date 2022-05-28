@@ -10,6 +10,7 @@ on:
 env:
   # Discord Webhook URL
   DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+  GRAPHQL_ENDPOINT: ${{ secrets.GRAPHQL_ENDPOINT }}
 
 jobs:
   build-and-test-and-exec:
