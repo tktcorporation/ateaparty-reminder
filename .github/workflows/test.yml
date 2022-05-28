@@ -8,7 +8,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: batch-action
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -16,13 +15,13 @@ jobs:
           node-version: "16.x"
       - uses: actions/cache@v2
         with:
-          path: node_modules
+          path: ./batch-action/node_modules
           key: ${{runner.os}}-nodemodules-${{ hashFiles('**/package_lock.json') }}
       - name: npm install, lint, test and build
         run: |
           ls -la
+          ls -la ./batch-action/lib
+          chmod 777 -R ./batch-action/lib
+          chown -R runner:docker ./batch-action/lib
           ls -la ./lib
-          chmod 777 -R ./lib
-          chown -R runner:docker ./lib
-          ls -la ./lib
-          docker-compose run --rm app /bin/bash -c "dum check-build"
+          docker-compose run --rm app /bin/bash -c "whoami && ls -la && dum check-build"
