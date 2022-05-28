@@ -22,7 +22,7 @@
     },
     "scripts": {
         "start": "node -r ts-node/register src/main.ts",
-        "build": "tsc",
+        "build": "tsc && ncc build -m",
         "format": "prettier --write \"{src,test}/**/{*.ts,*.tsx,*.js,*.jsx}\"",
         "format:check": "prettier --check \"{src,test}/**/{*.ts,*.tsx,*.js,*.jsx}\"",
         "lint": "eslint \"{src,apps,libs,test}/**/{*.spec.ts,*.ts,*.tsx,*.js,*.jsx}\"",
@@ -30,10 +30,11 @@
         "test": "jest --passWithNoTests",
         "test:watch": "jest --watch",
         "test:cov": "jest --coverage",
-        "pack": "ncc build -m",
-        "all": "npm run format && npm run lint && npm test && npm run build && npm run pack",
-        "pre-commit": "all",
-        "exec": "npm run all && node dist/index.js",
+        "check:fix": "npm run format && npm run lint:fix && npm test",
+        "check": "npm run format:check && npm run lint && npm run test",
+        "check-build": "npm run check && npm run build",
+        "pre-commit": "check:fix",
+        "exec": "npm run build && node dist/index.js",
         "codegen": "graphql-codegen --config codegen.yml"
     },
     "repository": {

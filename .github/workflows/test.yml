@@ -20,6 +20,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "16.x"
-      - name: npm install, build, lint and test
+      - name: npm install, lint, test and build
         run: |
-          docker-compose run --rm -u 0:0 app /bin/bash -c "npm run all"
+          docker-compose run --rm -u 0:0 app /bin/bash -c "npm run check-build"
