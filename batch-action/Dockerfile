@@ -10,6 +10,8 @@ RUN apt-get update && \
   git \
   sudo
 
+RUN npm install -g npm@8.11.0
+RUN curl -sSL https://bina.egoist.sh/egoist/dum | sh
 
 ENV UNAME=docker
 ENV GID=1000
@@ -19,9 +21,6 @@ RUN groupadd -g $GID -o $UNAME
 RUN useradd -m -u $UID -g $GID -G sudo -o -s /bin/bash $UNAME
 RUN echo "$UNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-RUN npm install -g npm@8.11.0
-
 
 # WORKDIR /app
 
