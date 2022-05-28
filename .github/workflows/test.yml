@@ -20,8 +20,7 @@ jobs:
       - name: npm install, lint, test and build
         run: |
           ls -la
-          ls -la ./batch-action/lib
-          chmod 777 -R ./batch-action/lib
-          chown -R runner:docker ./batch-action/lib
-          ls -la ./batch-action/lib
+          ls -la ./batch-action/
+          chmod a+w -R ./batch-action
+          ls -la ./batch-action/
           docker-compose run --rm app /bin/bash -c "whoami && ls -la && dum check-build"
