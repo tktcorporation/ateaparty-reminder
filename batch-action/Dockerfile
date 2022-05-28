@@ -22,6 +22,8 @@ RUN useradd -m -u $UID -g $GID -G sudo -o -s /bin/bash $UNAME
 RUN echo "$UNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
+USER $UNAME
+
 # WORKDIR /app
 
 # # COPY package.json package.json
@@ -30,7 +32,7 @@ RUN echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 # RUN npm i
 
 COPY entrypoint-dev.sh entrypoint-dev.sh
-RUN chmod +x entrypoint-dev.sh
+RUN sudo chmod +x entrypoint-dev.sh
 COPY  . .
 
 ENTRYPOINT [ "/entrypoint-dev.sh" ]
