@@ -23,5 +23,5 @@ jobs:
           ls -la ./batch-action/lib
           chmod 777 -R ./batch-action/lib
           chown -R runner:docker ./batch-action/lib
-          ls -la ./lib
+          ls -la ./batch-action/lib
           docker-compose run --rm app /bin/bash -c "whoami && ls -la && dum check-build"
