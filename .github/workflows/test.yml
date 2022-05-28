@@ -23,5 +23,6 @@ jobs:
           ls -la
           ls -la ./lib
           chmod 777 -R ./lib
+          chown -R runner:docker ./lib
           ls -la ./lib
-          docker-compose run --rm -u root app /bin/bash -c "dum check-build"
+          docker-compose run --rm app /bin/bash -c "dum check-build"
